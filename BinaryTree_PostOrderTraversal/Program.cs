@@ -8,20 +8,29 @@ namespace BinaryTree_PostOrderTraversal
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Количество вершин:");
-            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine(Messages.NumberOfNodes);
 
-            Console.WriteLine("Вершины:");
-            for (int i = 0; i < n; i++)
+            int nodeNumber = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(Messages.Nodes);
+
+            for (int i = 0; i < nodeNumber; i++)
             {
                 binaryTree.Add(int.Parse(Console.ReadLine()));
             }
 
-            Console.WriteLine("Готовое дерево:");
+            Console.WriteLine(Messages.CreatedTree);
             binaryTree.PrintAsTree();
-
-            Console.WriteLine("Обратный обход:");
+            Console.WriteLine(Messages.PostOrderTraversal);
             BinaryTreeConsole.PrintToConsole(binaryTree);
         }
+    }
+
+    public struct Messages
+    {
+        public const string NumberOfNodes = "Количество вершин:";
+        public const string Nodes = "Вершины:";
+        public const string CreatedTree = "Готовое дерево";
+        public const string PostOrderTraversal = "Обратный обход:";
     }
 }
