@@ -2,7 +2,6 @@
 
 namespace BinaryTree_PostOrderTraversal
 {
-    // Узел
     public class Node
     {
         public Node(int value)

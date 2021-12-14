@@ -3,12 +3,7 @@ using System.Collections.Generic;
 
 namespace BinaryTree_PostOrderTraversal
 {
-    /// <summary>
-    /// Обратный
-    /// левый потомок, правый потомок, корень.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class PostOrderTraversal : ITraversalStrategy
+    public class PostOrderTraversal
     {
         public IEnumerable<int> Traversal(Node node)
         {

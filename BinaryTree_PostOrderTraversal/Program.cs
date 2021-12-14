@@ -21,13 +21,7 @@ namespace BinaryTree_PostOrderTraversal
             binaryTree.PrintAsTree();
 
             Console.WriteLine("Обратный обход:");
-            ShowBinaryTree(new PostOrderTraversal());
-        }
-
-        public static void ShowBinaryTree(ITraversalStrategy traversalStrategy)
-        {
-            binaryTree.TraversalStrategy = traversalStrategy;
-            binaryTree.PrintToConsole();
+            BinaryTreeConsole.PrintToConsole(binaryTree);
         }
     }
 }

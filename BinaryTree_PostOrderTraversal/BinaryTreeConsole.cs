@@ -6,11 +6,11 @@ namespace BinaryTree_PostOrderTraversal
 {
     static class BinaryTreeConsole
     {
-        public static void PrintToConsole<T>(this IEnumerable<T> source)
+        public static void PrintToConsole(BinaryTree binaryTree)
         {
-            foreach (var item in source)
+            foreach (var item in binaryTree)
             {
-                System.Console.Write($"{item} ");
+                Console.Write($"{item} ");
             }
         }
 
@@ -26,7 +26,7 @@ namespace BinaryTree_PostOrderTraversal
                 return;
             }
 
-            int rootTop = System.Console.CursorTop + topMargin;
+            int rootTop = Console.CursorTop + topMargin;
             var last = new List<NodeInfo>();
             var next = root.Root;
 
@@ -105,21 +105,21 @@ namespace BinaryTree_PostOrderTraversal
                     }
                 }
             }
-            System.Console.SetCursorPosition(0, rootTop + 2 * last.Count);
+            Console.SetCursorPosition(0, rootTop + 2 * last.Count);
         }
 
         private static void Print(string symbol, int top, int left, int right = -1)
         {
-            System.Console.SetCursorPosition(left, top);
+            Console.SetCursorPosition(left, top);
 
             if (right < 0)
             {
                 right = left + symbol.Length;
             }
 
-            while (System.Console.CursorLeft < right)
+            while (Console.CursorLeft < right)
             {
-                System.Console.Write(symbol);
+                Console.Write(symbol);
             }
         }
 

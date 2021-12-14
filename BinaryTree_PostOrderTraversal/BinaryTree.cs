@@ -6,39 +6,13 @@ namespace BinaryTree_PostOrderTraversal
 {
     public class BinaryTree : ICollection<int>
     {
-        /// <summary>
-        /// Количество элементов в дереве считая с корнем
-        /// </summary>
         public int Count { get; private set; }
 
-
-        /// <summary>
-        /// Корень
-        /// </summary>
         public Node Root { get; private set; }
 
+        readonly PostOrderTraversal postOrderTraversal = new PostOrderTraversal();
 
-        /// <summary>
-        /// Проход дерева
-        /// </summary>
-        private ITraversalStrategy _traversalStrategy;
-
-        /// <summary>
-        /// Свойства для прохода дерева
-        /// По умолчанию симметричный
-        /// </summary>
-        public ITraversalStrategy TraversalStrategy
-        {
-            get => _traversalStrategy ??= new PostOrderTraversal();
-            set => _traversalStrategy = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Только для чтения
-        /// Это свойтсво содержиться в интерфейсе ICollection
-        /// </summary>
         public bool IsReadOnly => false;
-
 
         public void Add(int value)
         {
@@ -120,34 +94,15 @@ namespace BinaryTree_PostOrderTraversal
             Count = 0;
         }
 
-        /// <summary>
-        /// Копировать все элементы дерева в массив начиная с заданного элемента
-        /// </summary>
         public void CopyTo(int[] array, int arrayIndex)
         {
-            if (array == null)
-            {
-                throw new ArgumentNullException(nameof(array));
-            }
-
-            if (arrayIndex < 0)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-
-            if (array.Length - arrayIndex < Count)
-            {
-                throw new ArgumentException();
-            }
-
-            var items = TraversalStrategy.Traversal(Root);
+            var items = postOrderTraversal.Traversal(Root);
 
             foreach (var item in items)
             {
                 array[arrayIndex++] = item;
             }
         }
-
 
         public bool Remove(int item)
         {
@@ -235,7 +190,7 @@ namespace BinaryTree_PostOrderTraversal
 
         public IEnumerator<int> GetEnumerator()
         {
-            return TraversalStrategy.Traversal(Root).GetEnumerator();
+            return postOrderTraversal.Traversal(Root).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
